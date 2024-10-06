@@ -17,6 +17,8 @@ Route::get('/aviation', [ArticleController::class, 'index_aviation']);
 
 Route::get('/markets', [ArticleController::class, 'index_markets']);
 
+Route::get('/history', [ArticleController::class, 'index_history']);
+
 // Route::get('/articles/{id}', [ArticleController::class, 'show']);
 Route::get('{category}/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 

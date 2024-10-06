@@ -225,6 +225,49 @@ class ArticleController extends Controller
         ]);
     }  
 
+    public function index_history()
+    {
+        //
+        $headers = [
+            'Content-Type' => 'application/json',
+            // 'AccessToken' => 'key',
+            // 'Authorization' => 'Bearer token',
+        ];
+
+        $client = new \GuzzleHttp\Client([
+            'headers' => $headers
+        ]);
+
+        // $url = 'http://localhost:8055/items/posts/'.$id;
+        // $url = 'http://localhost/wp/v2/posts/'.$id;
+        // $url = 'http://wp-magellan.localhost/wp-json/wp/v2/posts/'.$id;
+        // $url = 'http://localhost:8055/items/posts/'.$id.'/?fields=*,author.first_name,author.last_name,author.photo';
+        // $url = 'http://0.0.0.0:8055/items/articles/'.'?fields=*,category.categoryColor';
+        $url = 'http://0.0.0.0:8055/items/articles?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=history';
+  
+        // $categoryUrl = 'http://0.0.0.0:8055/items/categories?fields=name'; // Replace with your categories endpoint
+        // $categoryResponse = $client->request('GET', $categoryUrl);
+        // $categories = json_decode($categoryResponse->getBody()->getContents())->data;
+        // dd($categories);
+        
+        $response = $client->request('GET', $url, [
+        'headers' => [
+        'Content-Type' => 'application/json'
+        ]
+        // 'body' => $json_rq
+        ]);
+        
+        //get the content from the body of the response
+        // dd(json_decode(($response->getBody()->getContents())));
+        // $post_tmp = $response->getBody()->getContents();
+        $articles = json_decode(($response->getBody()->getContents()));
+        $articles = $articles->data;
+        // dd($articles);
+        return view('home')->with([
+            'articles' => $articles,
+        ]);
+    } 
+
     /**
      * Show the form for creating a new resource.
      */

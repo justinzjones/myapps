@@ -27,7 +27,7 @@
         <!-- added for Google Maps -->
         {{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> --}}
                 <!-- Google Maps -->
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script> --}}
+        
         
         {{-- <script src="{{ asset('js/myJs.js') }}"></script> --}}
 

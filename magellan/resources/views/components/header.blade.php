@@ -64,6 +64,15 @@
                 'border-l-4 text-hippie-blue-700 border-hippie-blue-500 bg-hippie-blue-100':  menu === 'markets' 
               }">Markets
         </a>
+
+        <a href="/history"
+                      @click="menu = 'travel'"
+                      class="block py-2 pl-3 pr-4 text-base font-medium"
+                      x-bind:class="{ 
+                'text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700': menu !== 'history', 
+                'border-l-4 text-hippie-blue-700 border-hippie-blue-500 bg-hippie-blue-100':  menu === 'history' 
+              }">History
+        </a>
       
       
       </div>
@@ -171,6 +180,15 @@
                           'hover:border-gray-300 hover:text-gray-700 text-gray-500 border-transparent': menu !== 'aviation', 
                           'text-gray-900 border-hippie-blue-400':  menu === 'aviation' 
                         }">Aviation
+                    </a>
+
+                    <a href="/history"
+                      @click="menu = 'history'"
+                      class="inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2"
+                      x-bind:class="{ 
+                          'hover:border-gray-300 hover:text-gray-700 text-gray-500 border-transparent': menu !== 'history', 
+                          'text-gray-900 border-hippie-blue-400':  menu === 'history' 
+                        }">History
                     </a>
                     <!-- this div is needed to center the menu -->
                     <div></div>

@@ -15,7 +15,7 @@
           <div>
             <div x-data="{ bgColor: '{{$article->category->color}}' }" class="flex items-center text-xs gap-x-4">
               <!-- <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time> -->
-              <time datetime="2020-03-16" class="text-gray-500">{{ \Carbon\Carbon::parse($article->date_created)->format('M d, Y')}}</time>
+              <!-- <time datetime="2020-03-16" class="text-gray-500">{{ \Carbon\Carbon::parse($article->date_created)->format('M d, Y')}}</time> -->
 
 
       
@@ -35,7 +35,7 @@
               </h3>
               <!-- Get the first 2 sentences for excerpt -->
               @php
-              $excerpt = get_excerpt($article->content, 2, 3);
+              $excerpt = get_excerpt($article->content, 3, 3);
               @endphp
               <p class="mt-5 text-base leading-6 text-gray-600"> {!!$excerpt!!} </p>
             </div>
@@ -44,18 +44,19 @@
 
 
 
-                @if (!empty($article->author->avatar))
+                <!-- @if (!empty($article->author->avatar))
                 <img src="http://0.0.0.0:8055/assets/{{ $article->author->avatar }}" alt="" class="w-10 h-10 rounded-full bg-gray-50">
-                @endif
+                @endif -->
 
                 <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
+                  <!-- <p class="font-semibold text-gray-900">
                     <a href="#">
                       <span class="absolute inset-0"></span>
                       {{ $article->author->first_name ?? '' }} {{ $article->author->last_name ?? '' }}
                     </a>
-                  </p>
+                  </p> -->
                   <!-- <p class="text-gray-600">Co-Founder / CTO</p> -->
+                  <time datetime="2020-03-16" class="text-gray-500">{{ \Carbon\Carbon::parse($article->date_created)->format('M d, Y')}}</time>
                 </div>
               </div>
             </div>
