@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../CPD"
+		},
+		{
+			"path": "../livewire_hpp"
+		},
+		{
+			"path": "../blog"
+		}
+	]
+}

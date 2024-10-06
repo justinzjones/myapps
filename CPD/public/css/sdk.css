@@ -1,0 +1,147 @@
+
+.card-header {
+    background-color: #0003
+}
+
+.form-wrapper {
+    width: 28rem;
+    background-color: #fafafa;
+    /* border: 1px solid #0003; */
+    /* border-radius: .25rem; */
+    padding: 0rem;
+    /* box-shadow: 0 0 .5rem #0000000d */
+}
+
+iframe,.field input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e4e4e4;
+    background-color: #fff;
+    border-radius: 0.375rem;
+    /* border-color: 1px solid #fbfbfb; */
+    /* background-color: rgba(79, 70, 229, var(--tw-bg-opacity)); */
+}
+
+.field {
+    height: 3.5rem;
+    background-color: #fafafa;
+    border-color: 1px solid #fbfbfb;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    padding: .5rem
+}
+
+
+
+.field-group {
+    display: flex
+}
+
+#card-submit-btn {
+    height: 3rem;
+    margin-bottom: 0
+    --tw-bg-opacity: 1;
+    background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+    border-color: transparent;
+    border-width: 1px;
+    padding: 5px 20px 5px 20px;
+    margin: 0px 8px 0px 8px;
+
+}
+
+#card-expiration-date {
+    /* margin-left: .5rem */
+}
+
+/* .init-demo-form,.cc-done,.cc-info {
+    text-align: center
+} */
+
+.cc-error {
+    color: #fff;
+    text-align: center;
+    background-color: tomato;
+    border: 1px solid #0000001a;
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    display: none
+}
+
+.cc-done h3,.cc-info h3 {
+    margin: 0 0 1rem;
+    font-weight: 700
+}
+
+p {
+    margin: 0
+}
+
+button.field {
+    background-color: #0000000d;
+    border-radius: .25rem;
+    margin: 0;
+    box-shadow: 0 0 .5rem #0000000d
+}
+
+button.field:hover {
+    background-color: #0000001a;
+    margin: 0
+}
+
+button.field:active {
+    background-color: #0003;
+    margin: 0
+}
+
+.field--error {
+    background-color: tomato;
+    display: none
+}
+
+.field--error.has-error {
+    display: block
+}
+
+.cc-form {
+    display: none
+}
+
+.panel {
+    width: 80%;
+    margin: 2em auto
+}
+
+.panel-body {
+    width: 90%;
+    margin: 2em auto
+}
+
+body {
+    font-size: 18px
+}
+
+label {
+    font-weight: 400
+}
+
+.helper-text {
+    color: #e91e63;
+    height: 12px;
+    margin-top: 5px;
+    font-size: 12px;
+    display: block
+}
+
+.helper-text-green {
+    color: green
+}
+
+/* .hosted-field-focus {
+    box-shadow: none;
+    background-image: linear-gradient(#009688,#009688),linear-gradient(#d2d2d2,#d2d2d2);
+    background-size: 0 2px,100% 1px;
+    outline: none;
+    animation: input-highlight .5s forwards
+} */
+
