@@ -20,11 +20,15 @@
 
       
 
-              <a href="#"
+              <!-- <a href="#"
                  :class="`bg-${bgColor}`"
                 class="relative z-10 rounded-full px-3 py-1.5 font-medium text-gray-600">
                 {{ ucfirst($article->category->name) }}
-              </a>
+              </a> -->
+              <p class="text-sm font-semibold leading-7 text-hippie-blue-500">
+                {{ ucfirst($article->category->name) }}
+              </p>
+              <!-- <p class="text-base font-semibold leading-7 text-hippie-blue-500">{{ ucfirst($article->category->name) }}</p> -->
             </div>
             <div class="relative max-w-xl group">
               <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">

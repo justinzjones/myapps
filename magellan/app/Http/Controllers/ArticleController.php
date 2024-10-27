@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
 {
@@ -289,33 +291,23 @@ class ArticleController extends Controller
      */
     public function show(string $category, string $id)
     {
-        // Headers for the request
-        $headers = [
-            'Content-Type' => 'application/json',
-        ];
-    
-        // Guzzle HTTP Client
-        $client = new \GuzzleHttp\Client([
-            'headers' => $headers
-        ]);
-    
         // Build the API request URL
         $url = 'http://localhost:8055/items/articles/' . $id . '/?fields=id,title,content,date_created,category.name,author.last_name,author.first_name,author.avatar';
-        
-        // Make the GET request to the API
-        $response = $client->request('GET', $url, [
-            'headers' => [
-                'Content-Type' => 'application/json'
-            ]
-        ]);
     
-        // Get the content from the response and decode it
-        $article = json_decode($response->getBody()->getContents());
-        $article = $article->data;
+        // Make the GET request using Laravel's Http facade
+        $response = Http::get($url);
+    
+        // Check if the request was successful or if the article was not found
+        if ($response->failed() || !$response->json('data')) {
+            Log::error("Article not found in Directus: {$id}");
+            abort(404, 'Article not found');
+        }
+    
+        // Convert the article data to an object
+        $article = json_decode(json_encode($response->json('data')));
     
         // Ensure the category in the URL matches the article's actual category
         if (strtolower($category) !== strtolower($article->category->name)) {
-            // Optionally handle mismatches by redirecting or returning a 404
             return redirect()->route('articles.show', [
                 'category' => strtolower($article->category->name),
                 'id' => $article->id,
@@ -324,8 +316,8 @@ class ArticleController extends Controller
     
         // Return the article view and pass the article and category to the view
         return view('article', [
-            'article' => $article,  // Pass the article object
-            'category' => $category,  // Pass the category name from the URL
+            'article' => $article,  // Pass the article as an object
+            'category' => $category,
         ]);
     }
 

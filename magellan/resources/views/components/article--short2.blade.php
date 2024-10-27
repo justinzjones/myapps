@@ -8,15 +8,12 @@
         </div>
         <div class="max-w-xl">
           <div x-data="{ bgColor: '{{$article->category->color}}' }" class="flex items-center mt-8 text-xs gap-x-4">
-          <time datetime="2020-03-16" class="text-gray-500">{{ \Carbon\Carbon::parse($article->date_created)->format('M d, Y')}}</time>
+          
           <!-- @php $bg_category = "bg-".$article->category->color @endphp -->
           
-                        <a href="#" 
-                        :class="`bg-${bgColor}`"
-                        class="relative z-10 rounded-full px-3 py-1.5 font-medium text-gray-600" 
-                        >
-                        {{$article->category->name}}
-                        </a>
+          <p class="text-sm font-semibold leading-7 text-hippie-blue-500">
+                {{ ucfirst($article->category->name) }}
+              </p>
           </div>
           <div class="relative group">
           <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -34,6 +31,27 @@
                             @endphp
                             <p class="mt-5 text-base leading-6 text-gray-600"> {!!$excerpt!!} </p>
           </div>
+          <div class="flex pt-3 mt-3 border-t border-gray-900/5">
+              <div class="relative flex items-center gap-x-4">
+
+
+
+                <!-- @if (!empty($article->author->avatar))
+                <img src="http://0.0.0.0:8055/assets/{{ $article->author->avatar }}" alt="" class="w-10 h-10 rounded-full bg-gray-50">
+                @endif -->
+
+                <div class="text-sm leading-6">
+                  <!-- <p class="font-semibold text-gray-900">
+                    <a href="#">
+                      <span class="absolute inset-0"></span>
+                      {{ $article->author->first_name ?? '' }} {{ $article->author->last_name ?? '' }}
+                    </a>
+                  </p> -->
+                  <!-- <p class="text-gray-600">Co-Founder / CTO</p> -->
+                  <time datetime="2020-03-16" class="text-gray-500">{{ \Carbon\Carbon::parse($article->date_created)->format('M d, Y')}}</time>
+                </div>
+              </div>
+            </div>
 
         </div>
       </article>

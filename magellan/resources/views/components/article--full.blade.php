@@ -1,6 +1,7 @@
 <div class="px-6 py-16 lg:px-8">
   <div class="max-w-2xl mx-auto text-base leading-7 text-gray-700">
-    <p class="text-base font-semibold leading-7 text-hippie-blue-500">{{ ucfirst($article->category->name) }}</p>
+    <!-- <p class="text-base font-semibold leading-7 text-hippie-blue-500">{{ ucfirst($article->category->name) }}</p> -->
+    <p class="text-sm font-semibold leading-7 text-hippie-blue-500">{{ ucfirst($article->category->name) }}</p>
     <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $article->title }}</h1>
     <!-- <p class="mt-6 text-xl leading-8">Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien.</p> -->
     <div class="max-w-2xl mt-8">
