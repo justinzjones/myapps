@@ -188,6 +188,16 @@
 
                 <li>
                   <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
+                  <a href="#" @click.prevent="menu = 'visual'" class="flex p-2 text-sm font-semibold leading-6 rounded-md hover:text-white hover:bg-gray-800 group gap-x-3" x-bind:class="{ 'hover:border-gray-300 text-gray-400  hover:text-gray-700': menu !== 'visual', 'border-gray-300 bg-gray-800 text-white': menu === 'visual' }">
+                    <svg class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                    </svg>
+                    Visual
+                  </a>
+                </li>
+
+                <li>
+                  <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
                   <a href="#" @click.prevent="menu = 'monitor'" class="flex p-2 text-sm font-semibold leading-6 rounded-md hover:text-white hover:bg-gray-800 group gap-x-3" x-bind:class="{ 'hover:border-gray-300 hover:text-gray-700  text-gray-400': menu !== 'monitor', 'border-gray-300 bg-gray-800 text-white': menu === 'monitor' }">
                   <svg class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
@@ -229,7 +239,7 @@
 
             <li class="mt-auto -mx-6">
               <a href="#" class="flex items-center px-6 py-3 text-sm font-semibold leading-6 text-white gap-x-4 hover:bg-gray-800">
-                <img class="w-8 h-8 bg-gray-800 rounded-full" src="https://media.licdn.com/dms/image/D560BAQHp7hxRHvKmoA/company-logo_200_200/0/1702389459602/3victors_logo?e=1722470400&v=beta&t=4hDvgNWioUSbhkN7dueYmYogPRlSJzNjavfjvUX6rXI" alt="">
+                <img class="w-8 h-8 bg-gray-800 rounded-full" src="https://media.licdn.com/dms/image/v2/D5603AQGK4W8Cye4JQw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1713384133828?e=1737590400&v=beta&t=mqy3J7MG08mZRHMi9MRshrq6hJopURz1ApXHQhTJraI" alt="">
                 <span class="sr-only">Your profile</span>
                 <span aria-hidden="true">3V admin</span>
               </a>
@@ -292,6 +302,14 @@
             <x-onboard_dash />
           </div>
         </template>
+
+
+        <template x-if="menu === 'visual'">
+          <div>
+            <x-visual_dash />
+          </div>
+        </template>
+        
 
         <template x-if="menu === 'scheduler'">
           <div>

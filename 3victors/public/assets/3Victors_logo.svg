@@ -1,0 +1,14 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
+  <!-- Background -->
+  <rect width="400" height="100" fill="#163E77" />
+  
+  <!-- Logo Icon -->
+  <path d="M40,25 L50,50 L40,75 L50,50 L60,25 L50,50 L60,75" fill="white" />
+
+  <!-- Main Text -->
+  <text x="80" y="55" font-family="Arial, sans-serif" font-size="36" fill="white" font-weight="bold">3VICTORS</text>
+
+  <!-- Sub Text -->
+  <text x="80" y="80" font-family="Arial, sans-serif" font-size="14" fill="white">an ATPCO company</text>
+</svg>

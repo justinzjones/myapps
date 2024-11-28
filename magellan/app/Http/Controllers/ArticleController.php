@@ -135,7 +135,7 @@ class ArticleController extends Controller
         $articles = json_decode(($response->getBody()->getContents()));
         $articles = $articles->data;
         // dd($articles);
-        return view('home')->with([
+        return view('home-travel')->with([
             'articles' => $articles,
         ]);
     }

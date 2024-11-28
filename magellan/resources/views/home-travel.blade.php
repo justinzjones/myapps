@@ -1,6 +1,10 @@
 <x-magellan-layout>
 
-  <x-header/>
+
+
+
+  <x-travel_hero/>
+
 
   {{-- Convert the array to a collection and pass the first 3 articles --}}
   <x-articles--home :articles="collect($articles)->take(3)" />

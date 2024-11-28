@@ -8,6 +8,9 @@ document.addEventListener('alpine:init', () => {
       site_outstanding: false,
       delivery: false,
 
+      tab_visual: 'price_evolution',
+  
+
       tab_input: 'input',
       
 

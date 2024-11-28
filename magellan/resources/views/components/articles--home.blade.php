@@ -37,21 +37,28 @@
 
                     <!-- Right column -->
                     <div class="grid grid-cols-1 gap-4 py-8 sm:py-10">
-                        <section aria-labelledby="section-2-title">
-                            <h2 class="sr-only" id="section-2-title">Section title</h2>
-                            <div class="overflow-hidden bg-white rounded-lg">
-                                <div class="p-0">
-                                    <!-- Your content -->
-                                    <img class="float-right w-auto h-auto" src="{{ asset('assets/images/ad.jpeg') }}" alt="">
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+    <section aria-labelledby="section-2-title">
+        <h2 class="sr-only" id="section-2-title">Section title</h2>
+        <div class="overflow-hidden bg-white rounded-lg">
+            <div class="p-0">
+                <!-- Existing ad image -->
+                <img class="float-right w-auto h-auto" src="{{ asset('assets/images/ad.jpeg') }}" alt="Ad Image">
+
+                <!-- New image below the ad.jpeg -->
+                <img class="mt-12 float-right w-auto h-[169px]" src="{{ asset('assets/images/ad2.webp') }}" alt="Rectangular Image">
+            </div>
+        </div>
+    </section>
+</div>
+
+                    </section>
+
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 
 
 

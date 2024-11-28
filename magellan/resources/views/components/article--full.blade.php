@@ -4,6 +4,29 @@
     <p class="text-sm font-semibold leading-7 text-hippie-blue-500">{{ ucfirst($article->category->name) }}</p>
     <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $article->title }}</h1>
     <!-- <p class="mt-6 text-xl leading-8">Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien.</p> -->
+    <div class="flex pt-3 mt-3 border-t border-gray-900/5">
+              <div class="relative flex items-center gap-x-4">
+
+
+
+                <!-- @if (!empty($article->author->avatar))
+                <img src="http://0.0.0.0:8055/assets/{{ $article->author->avatar }}" alt="" class="w-10 h-10 rounded-full bg-gray-50">
+                @endif -->
+
+                <div class="text-sm leading-6">
+                  <!-- <p class="font-semibold text-gray-900">
+                    <a href="#">
+                      <span class="absolute inset-0"></span>
+                      {{ $article->author->first_name ?? '' }} {{ $article->author->last_name ?? '' }}
+                    </a>
+                  </p> -->
+                  <!-- <p class="text-gray-600">Co-Founder / CTO</p> -->
+                  <time datetime="2020-03-16" class="text-gray-500">{{ \Carbon\Carbon::parse($article->date_created)->format('M d, Y')}}</time>
+                </div>
+              </div>
+            </div>
+    
+    
     <div class="max-w-2xl mt-8">
 
       {!! $article->content !!}

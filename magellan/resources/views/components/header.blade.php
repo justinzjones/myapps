@@ -122,7 +122,7 @@
 
 
 
-                      <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+                      <div x-show="open" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
                       x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" 
                       flyout menu, show/hide based on flyout menu state." 
                       class="absolute inset-x-0 text-sm text-gray-500 top-full" x-ref="panel" @click.away="open = false" style="display: none;">
