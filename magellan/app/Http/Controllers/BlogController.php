@@ -9,38 +9,31 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        //
+        // Define the URL and headers
+        $url = 'http://0.0.0.0:8055/items/articles';
         $headers = [
             'Content-Type' => 'application/json',
-            // 'AccessToken' => 'key',
-            // 'Authorization' => 'Bearer token',
+            // 'Authorization' => 'Bearer token', // Uncomment if needed
         ];
 
-        $client = new \GuzzleHttp\Client([
-            'headers' => $headers
-        ]);
+        // Make the HTTP GET request using Laravel's HTTP client
+        $response = Http::withHeaders($headers)->get($url);
 
-        // $url = 'http://localhost:8055/items/posts/'.$id;
-        // $url = 'http://localhost/wp/v2/posts/'.$id;
-        // $url = 'http://wp-magellan.localhost/wp-json/wp/v2/posts/'.$id;
-        // $url = 'http://localhost:8055/items/posts/'.$id.'/?fields=*,author.first_name,author.last_name,author.photo';
-        $url = 'http://0.0.0.0:8055/items/articles';
-        
-        $response = $client->request('GET', $url, [
-        'headers' => [
-        'Content-Type' => 'application/json'
-        ]
-        // 'body' => $json_rq
-        ]);
-        
-        //get the content from the body of the response
-        // dd(json_decode(($response->getBody()->getContents())));
-        // $post_tmp = $response->getBody()->getContents();
-        $articles = json_decode(($response->getBody()->getContents()));
-        dd($articles);
-        // return view('blog_posts')->with('posts', $posts);
+        // Handle the response
+        if ($response->successful()) {
+            $articles = $response->json();
+            dd($articles);
+        } else {
+            // Handle errors
+            return response()->json([
+                'error' => 'Failed to fetch articles',
+                'status' => $response->status(),
+                'message' => $response->body(),
+            ], $response->status());
+        }
     }
 
     /**

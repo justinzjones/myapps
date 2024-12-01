@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\TravelController;
 
 Route::get('/home', function () {
     return view('home');
@@ -31,3 +32,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('travel/country/{id}', [TravelController::class, 'show_country']);
+Route::get('travel/region/{id}', [TravelController::class, 'show_region']);
