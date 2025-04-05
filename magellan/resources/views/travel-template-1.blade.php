@@ -4,21 +4,20 @@
         <!-- Hero Section -->
         <x-travel_hero :location="$location" />
                 <!-- Travel Navbar -->
-        <div class="z-10 w-full bg-gray-800">
-            <x-travel_navbar />
-        </div>
+        <x-travel_navbar />
 
         <!-- Main Content -->
         <!-- <div class="flex-grow">
             <div class="p-6">
                 <h2>Main Content Section</h2>
                 <p>Here is some content above the navbar...</p>
-                <div class="mt-10 bg-gray-100 h-96"></div>
-                <div class="mt-10 bg-gray-200 h-96"></div>
-                <div class="mt-10 bg-gray-300 h-96"></div>
+                <div class="mt-10 h-96 bg-gray-100"></div>
+                <div class="mt-10 h-96 bg-gray-200"></div>
+                <div class="mt-10 h-96 bg-gray-300"></div>
             </div>
         </div> -->
-
+         <!-- Main Content -->
+         <x-travel_overview :location="$location"/>
 
 
         <!-- Footer -->

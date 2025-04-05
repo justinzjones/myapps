@@ -11,7 +11,7 @@
         </div>
 
         <div class="px-6 mx-auto max-w-7xl lg:px-8">
-            <div class="max-w-3xl py-32 mx-auto sm:py-48 lg:py-56">
+            <div class="max-w-5xl py-32 mx-auto sm:py-48 lg:py-56">
                 <div class="hidden sm:mb-8 sm:flex sm:justify-left">
                     @if($location)
                         <x-travel_breadcrumbs :location="$location" />
@@ -23,7 +23,7 @@
                         <p class="mt-8 text-lg font-medium text-gray-400 text-pretty sm:text-xl/8">{{ $location->preamble }}</p>
                     @endif
                     <div class="flex items-center justify-center mt-10 gap-x-6">
-                        <a href="#" class="rounded-md bg-san-felix-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Get started</a>
+                        <a href="#" class="rounded-md bg-san-felix-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-san-felix-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Get started</a>
                         <a href="#" class="font-semibold text-white text-sm/6">Learn more <span aria-hidden="true">→</span></a>
                     </div>
                 </div>

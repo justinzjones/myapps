@@ -50,9 +50,9 @@ class TravelController extends Controller
      */
     public function show_country(string $id)
     {
-        $url = "{$this->baseUrl}/countries/{$id}/?fields=ISO_31661_alpha2,name,preamble,hero,
+        $url = "{$this->baseUrl}/countries/{$id}/?fields=ISO_31661_alpha2,name,preamble,hero,description,
                 fk_region.id,fk_region.name,
-                fk_place.id,fk_place.name,fk_place.intro,fk_place.hero";
+                fk_place.id,fk_place.name,fk_place.intro,fk_place.hero,fk_place.priority";
 
         // Make the HTTP GET request
         $response = Http::get($url);

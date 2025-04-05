@@ -1,8 +1,37 @@
-<div class="relative">
+<div id="travel-navbar" class="sticky-navbar">
     <!-- The only way to do great work is to love what you do. - Steve Jobs -->
      <nav class="bg-gray-800">
-  <div class="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('travel-navbar');
+            
+            // Initially position at bottom of viewport
+            navbar.style.position = 'fixed';
+            navbar.style.bottom = '0';
+            navbar.style.width = '100%';
+            navbar.style.zIndex = '50';
+            
+            // Add scroll event listener
+            let hasScrolled = false;
+            window.addEventListener('scroll', function() {
+                if (!hasScrolled && window.scrollY > 10) {
+                    // After scrolling, switch to sticky behavior
+                    navbar.style.position = 'sticky';
+                    navbar.style.top = '0';
+                    navbar.style.bottom = 'auto';
+                    hasScrolled = true;
+                } else if (hasScrolled && window.scrollY <= 10) {
+                    // Reset to bottom fixed when scrolled back to top
+                    navbar.style.position = 'fixed';
+                    navbar.style.bottom = '0';
+                    navbar.style.top = 'auto';
+                    hasScrolled = false;
+                }
+            });
+        });
+     </script>
+  <div class="px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
       <div class="flex items-center">
         <!-- <div class="shrink-0">
           <img class="w-auto h-8" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
@@ -10,10 +39,10 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md">Dashboard</a>
-            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Team</a>
-            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a>
-            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a>
+            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Overview</a>
+            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Experiences</a>
+            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Ideas</a>
+            <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Where to stay</a>
           </div>
         </div>
       </div>
@@ -33,7 +62,7 @@
       </div>
       <div class="flex -mr-2 sm:hidden">
         <!-- Mobile menu button -->
-        <button type="button" class="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+        <button type="button" class="inline-flex relative justify-center items-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Open main menu</span>
           <!--

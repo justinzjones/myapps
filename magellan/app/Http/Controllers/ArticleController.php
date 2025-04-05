@@ -12,7 +12,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $url = "{$this->baseUrl}?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar";
+        $url = "{$this->baseUrl}?fields=*,featured_image,category.name,category.color,author.first_name,author.last_name,author.avatar";
         $articles = $this->fetchArticles($url);
 
         return view('home', ['articles' => $articles]);
@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
     public function index_news()
     {
-        $url = "{$this->baseUrl}?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=news";
+        $url = "{$this->baseUrl}?fields=*,featured_image,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=news";
         $articles = $this->fetchArticles($url);
 
         return view('home', ['articles' => $articles]);
@@ -28,15 +28,15 @@ class ArticleController extends Controller
 
     public function index_travel()
     {
-        $url = "{$this->baseUrl}?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=travel";
+        $url = "{$this->baseUrl}?fields=*,featured_image,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=travel";
         $articles = $this->fetchArticles($url);
 
-        return view('home-travel', ['articles' => $articles]);
+        return view('home', ['articles' => $articles]);
     }
 
     public function index_aviation()
     {
-        $url = "{$this->baseUrl}?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=aviation";
+        $url = "{$this->baseUrl}?fields=*,featured_image,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=aviation";
         $articles = $this->fetchArticles($url);
 
         return view('home', ['articles' => $articles]);
@@ -44,7 +44,7 @@ class ArticleController extends Controller
 
     public function index_markets()
     {
-        $url = "{$this->baseUrl}?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=markets";
+        $url = "{$this->baseUrl}?fields=*,featured_image,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=markets";
         $articles = $this->fetchArticles($url);
 
         return view('home', ['articles' => $articles]);
@@ -52,34 +52,55 @@ class ArticleController extends Controller
 
     public function index_history()
     {
-        $url = "{$this->baseUrl}?fields=*,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=history";
+        $url = "{$this->baseUrl}?fields=*,featured_image,category.name,category.color,author.first_name,author.last_name,author.avatar&filter[category][name][_eq]=history";
         $articles = $this->fetchArticles($url);
 
         return view('home', ['articles' => $articles]);
     }
 
-    public function show(string $category, string $id)
+    public function show(string $category, string $article)
     {
-        $url = "{$this->baseUrl}/{$id}?fields=id,title,content,date_created,category.name,author.last_name,author.first_name,author.avatar";
+        $url = "{$this->baseUrl}/{$article}?fields=id,title,content,date_created,featured_image,image,category.name,author.last_name,author.first_name,author.avatar";
+        
+        Log::info("Fetching article", ['url' => $url]);
         $response = Http::get($url);
 
         if ($response->failed() || !$response->json('data')) {
-            Log::error("Article not found: {$id}");
+            Log::error("Article not found", ['id' => $article, 'status' => $response->status()]);
             abort(404, 'Article not found');
         }
 
-        $article = json_decode(json_encode($response->json('data')));
+        $articleData = json_decode(json_encode($response->json('data')));
 
-        if (strtolower($category) !== strtolower($article->category->name)) {
+        if (strtolower($category) !== strtolower($articleData->category->name)) {
+            Log::info("Redirecting to correct category", [
+                'requested' => $category, 
+                'actual' => $articleData->category->name
+            ]);
+            
             return redirect()->route('articles.show', [
-                'category' => strtolower($article->category->name),
-                'id' => $article->id,
+                'category' => strtolower($articleData->category->name),
+                'article' => $articleData->id,
             ]);
         }
 
+        // First try to fetch related articles from the same category
+        $relatedUrl = "{$this->baseUrl}?fields=id,title,content,date_created,featured_image,image,category.name&filter[category][name][_contains]={$articleData->category->name}&filter[id][_neq]={$article}&sort=-date_created&limit=3";
+        
+        Log::info("Fetching related articles", ['url' => $relatedUrl]);
+        $related_articles = $this->fetchArticles($relatedUrl);
+
+        // If no related articles found, fetch recent articles from any category
+        if (empty($related_articles)) {
+            Log::info("No related articles found, fetching recent articles instead");
+            $recentUrl = "{$this->baseUrl}?fields=id,title,content,date_created,featured_image,image,category.name&filter[id][_neq]={$article}&sort=-date_created&limit=3";
+            $related_articles = $this->fetchArticles($recentUrl);
+        }
+
         return view('article', [
-            'article' => $article,
+            'article' => $articleData,
             'category' => $category,
+            'related_articles' => $related_articles,
         ]);
     }
 

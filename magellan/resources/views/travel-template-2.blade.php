@@ -12,15 +12,7 @@
         </div>
 
         <!-- Main Content -->
-        <!-- <div class="flex-grow">
-            <div class="p-6">
-                <h2>Main Content Section</h2>
-                <p>Here is some content above the navbar...</p>
-                <div class="mt-10 bg-gray-100 h-96"></div>
-                <div class="mt-10 bg-gray-200 h-96"></div>
-                <div class="mt-10 bg-gray-300 h-96"></div>
-            </div>
-        </div> -->
+        <x-travel_overview />
 
 
 

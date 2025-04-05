@@ -61,11 +61,35 @@ export default {
                     '900': '#1e3737',
                     '950': '#0f2424',
                 },
-    
-    
             },
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [
+        forms, 
+        typography,
+        function ({ addUtilities, theme, variants }) {
+            const lineClampUtilities = {
+                '.line-clamp-1': {
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    '-webkit-box-orient': 'vertical',
+                    '-webkit-line-clamp': '1',
+                },
+                '.line-clamp-2': {
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    '-webkit-box-orient': 'vertical',
+                    '-webkit-line-clamp': '2',
+                },
+                '.line-clamp-3': {
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    '-webkit-box-orient': 'vertical',
+                    '-webkit-line-clamp': '3',
+                },
+            };
+            addUtilities(lineClampUtilities);
+        }
+    ],
 };
